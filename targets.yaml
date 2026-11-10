@@ -1,0 +1,28 @@
+# Targets for the public fleet. agent-ci validates this file on every run:
+# schema, unique ids and repositories, allowedOwners, and that each model
+# resolves under the routing policy in CI. The caller passes
+# public_only: true, so every run refuses a target GitHub does not report as
+# public (E_TARGET_VISIBILITY). Keep private repositories in
+# tkstang/agent-ci-private-fleet.
+#
+# Each target other than this repository needs AGENT_CI_TARGET_TOKEN
+# (contents and pull-requests write) to cover it.
+version: 1
+allowedOwners: [tkstang]
+defaults:
+  base: main
+  # Claude Haiku 5.5 through Claude Code. On GitHub-hosted runners this
+  # resolves to the personal route, CLAUDE_CODE_OAUTH_TOKEN.
+  model: claude-haiku-5-5
+  mode: edit
+  inputs:
+    timeoutMinutes: 30
+    maxAttempts: 2
+
+targets:
+  # Smoke target: this repository, published with GITHUB_TOKEN. Check the
+  # wiring with a manual tools-update run (no model) before adding real
+  # targets. Publishing to this repository needs "Allow GitHub Actions to
+  # create and approve pull requests" in its Actions settings.
+  - id: fleet-self
+    repository: tkstang/agent-ci-fleet
