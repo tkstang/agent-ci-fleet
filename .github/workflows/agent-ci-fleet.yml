@@ -86,8 +86,8 @@ jobs:
     secrets:
       AGENT_CI_TARGET_TOKEN: ${{ secrets.AGENT_CI_TARGET_TOKEN }}
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-      # Add the credential of every other route your targets use, for example:
-      # OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+      # The credential of every other route your targets use (fleet-self uses OpenCode Go):
+      OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
       # Pool routes (with allow_pool above): the pool key for Codex, the same
       # key for Claude Code, and the pool's https origin (https://host[:port]).
       # AGENT_CI_PROXY_API_KEY: ${{ secrets.AGENT_CI_PROXY_API_KEY }}
