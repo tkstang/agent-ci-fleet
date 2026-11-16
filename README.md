@@ -57,9 +57,8 @@ configuration.
 
 1. Secrets (repository Settings, Secrets and variables, Actions):
    - `CLAUDE_CODE_OAUTH_TOKEN`, from `claude setup-token`, for the default
-     `claude-haiku-5-5` model. The value starts with `sk-ant-oat01-`; store
-     it on one line with no surrounding spaces. `tools-update` needs no model
-     credential.
+     `claude-haiku-5-5` model. The value starts with `sk-ant-oat01-`.
+     `tools-update` needs no model credential.
    - `OPENCODE_API_KEY`, the OpenCode Go key, for targets that run an
      OpenCode Go model (`fleet-self` runs `deepseek-v4.1-flash`).
    - `AGENT_CI_TARGET_TOKEN`, a fine-grained token with contents and
@@ -122,8 +121,7 @@ schedules (examples are commented in the workflow).
   [Setup](#setup); `tools-update` needs none.
 - **A Claude run fails with `E_HARNESS_AUTH` (401 Invalid bearer token).**
   `CLAUDE_CODE_OAUTH_TOKEN` is not a valid setup token: it must be the whole
-  `sk-ant-oat01-` value from `claude setup-token`, with no leading or
-  trailing space. Store it again.
+  `sk-ant-oat01-` value from `claude setup-token`. Store it again.
 - **A Claude run fails with a usage-limit message.** The subscription behind
   the token has hit its limit. Wait for the reset, or point the target at
   another model.
